@@ -24,6 +24,6 @@ jobs:
 
       # scan using Synk
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
+        uses: snyk/actions/node@v4.0.0
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
