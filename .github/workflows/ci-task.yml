@@ -1,0 +1,25 @@
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: #for manual triger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: action/checkout@v4
+
+      - name: Setup Node JS
+        uses: action/setup-node@v4
+        with: 
+          node-version: 18
+          
+      - name: Install npm
+        run: npm install
+
+      - name: Run script
+        run: npm test
+        
+      
