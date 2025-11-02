@@ -21,5 +21,9 @@ jobs:
 
       - name: Run script
         run: echo " Simulate npm test script"
-        
-      
+
+      # scan using Synk
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
