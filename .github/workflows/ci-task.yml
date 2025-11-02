@@ -17,13 +17,13 @@ jobs:
           node-version: 18
           
       - name: Install npm
-        run: echo "Simulate npm install"
+        run: npm install
 
       - name: Run script
-        run: echo " Simulate npm test script"
+        run: npm test
 
       # scan using Synk
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@v4.0.0
+      - name: Run Snyk 
+        uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
