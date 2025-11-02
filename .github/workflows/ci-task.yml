@@ -24,7 +24,7 @@ jobs:
 
       # scan using Synk
       - name: Run Snyk 
-        uses: snyk/actions/node@v4.0.0
+        uses: snyk/actions/node@v1
         with:
           command: test
           args: --severity-threshold=medium
