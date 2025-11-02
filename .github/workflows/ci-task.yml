@@ -25,5 +25,8 @@ jobs:
       # scan using Synk
       - name: Run Snyk 
         uses: snyk/actions/node@master
+        with:
+          command: test
+          args: --severity-threshold=medium
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
