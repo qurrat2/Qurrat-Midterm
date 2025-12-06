@@ -9,7 +9,7 @@ on:
 
 jobs:
   run-shared-utility:
-    uses: ./.github/workflows/shared-utils.yml@main   # calls the reusable workflow
+    uses: ./.github/workflows/shared-utils.yml   # calls the reusable workflow
     with:
       target_branch: main
     secrets: inherit
