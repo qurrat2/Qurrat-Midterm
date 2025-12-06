@@ -32,7 +32,3 @@ jobs:
         id: get-datetime
         run: |
           echo "full_date=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
-
-      - name: Show secret (if provided)
-        if: ${{ secrets.my_token != '' }}
-        run: echo "My token is provided (masked)."
