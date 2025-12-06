@@ -1,0 +1,38 @@
+# .github/workflows/shared-utils.yml
+name: Shared Utility Workflow
+
+on:
+  workflow_call:
+    inputs:
+      target_branch:
+        required: true
+        type: string
+        description: 'Branch to check out'
+    outputs:
+      current_datetime:
+        description: 'Current date and time from the utility'
+        # value will be set using jobs.utility-job.outputs.datetime
+    secrets:
+      my_token:
+        required: false
+
+jobs:
+  utility-job:
+    runs-on: ubuntu-latest
+    outputs:
+      datetime: ${{ steps.get-datetime.outputs.full_date }}
+
+    steps:
+      - name: Checkout target branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.target_branch }}
+
+      - name: Get current date and time
+        id: get-datetime
+        run: |
+          echo "full_date=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
+
+      - name: Show secret (if provided)
+        if: ${{ secrets.my_token != '' }}
+        run: echo "My token is provided (masked)."
